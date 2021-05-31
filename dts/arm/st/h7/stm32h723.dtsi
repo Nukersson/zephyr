@@ -43,9 +43,36 @@
 		reg = <0x20000000 DT_SIZE_K(128)>;
 	};
 
-	/* AXI SRAM in D1 domain (AXI bus) */
+	/* System data RAM accessible over AXI bus: AXI SRAM in D1 domain */
 	sram0: memory@24000000 {
-		reg = <0x24000000 DT_SIZE_K(128)>;
 		compatible = "mmio-sram";
+		reg = <0x24000000 DT_SIZE_K(128)>;
+	};
+
+	/* System data RAM accessible over AXI/ITCM bus: AXI SRAM in D1 domain
+	 * or alternatively ITCM RAM
+	 * See "Table 8. ITCM/DTCM/AXI configuration" for proper configuration.
+	 */
+	sramitcm1: memory@24020000 {
+		compatible = "mmio-sram";
+		reg = <0x24020000 DT_SIZE_K(192)>;
+	};
+
+	/* System data RAM accessible over AHB bus: SRAM1 in D2 domain */
+	sram1: memory@30000000 {
+		reg = <0x30000000 DT_SIZE_K(16)>;
+		compatible = "mmio-sram";
+	};
+
+	/* System data RAM accessible over AHB bus: SRAM2 in D2 domain */
+	sram2: memory@30004000 {
+		compatible = "mmio-sram";
+		reg = <0x30004000 DT_SIZE_K(16)>;
+	};
+
+	/* System data RAM accessible over AHB bus: SRAM4 in D3 domain  */
+	sram4: memory@38000000 {
+		compatible = "mmio-sram";
+		reg = <0x38000000 DT_SIZE_K(16)>;
 	};
 };
