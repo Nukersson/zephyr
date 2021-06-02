@@ -243,3 +243,15 @@ int accept(int sock, struct sockaddr *addr, socklen_t *addrlen)
 {
 	return zsock_accept(sock, addr, addrlen);
 }
+
+int ferror(FILE *stream)
+{
+	(void)stream;
+	return EOF;
+}
+
+int fileno(FILE *stream)
+{
+	(void)stream;
+	return EOF;
+}
